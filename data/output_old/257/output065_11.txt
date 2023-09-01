@@ -1,0 +1,46 @@
+[I Wed Jul 28 11:25:16 2021] Program launch: 32 workers
+[A Wed Jul 28 11:25:16 2021] ./bin/enum-debug -coeffs 1 -divisors 1,1,1,5,1,1,1,1 -discriminant -262609375 -input data/257/p2e0mod8.txt,data/257/p5e6mod5.txt,data/257/p7e5mod7.txt,data/257/p3e0mod3.txt -bounds data/257/bounds065.txt -output data/output/257/output065_11.txt -tree data/257/treea8.txt -locked 4 -filter 11 
+[R Wed Jul 28 11:25:19 2021] [1, 4, 0, -28, -70, -84, -56, -25, 12]
+[R Wed Jul 28 11:25:20 2021] [1, 3, 0, 0, 0, 0, 0, -5, -15]
+[R Wed Jul 28 11:25:20 2021] [1, 3, 0, -14, 0, 42, 91, 60, 12]
+[R Wed Jul 28 11:25:20 2021] [1, 3, 0, 0, 0, 0, 0, 5, 15]
+[R Wed Jul 28 11:25:21 2021] [1, 2, 0, 0, 0, 0, 0, -25, -50]
+[R Wed Jul 28 11:25:21 2021] [1, 2, 0, 0, 0, 0, 0, -15, -30]
+[R Wed Jul 28 11:25:21 2021] [1, 2, 0, 0, 0, 0, 0, -5, -10]
+[R Wed Jul 28 11:25:21 2021] [1, 2, 0, -21, -35, -28, -21, 0, -7]
+[R Wed Jul 28 11:25:21 2021] [1, 2, 0, 0, 0, 0, 0, 5, 10]
+[R Wed Jul 28 11:25:21 2021] [1, 2, 0, 0, 0, 0, 0, 15, 30]
+[R Wed Jul 28 11:25:21 2021] [1, 2, 0, 0, 0, 0, 0, 25, 50]
+[R Wed Jul 28 11:25:21 2021] [1, 1, 0, 0, 0, 0, 0, -45, -45]
+[R Wed Jul 28 11:25:21 2021] [1, 1, 0, 0, 0, 0, 0, -40, -40]
+[R Wed Jul 28 11:25:21 2021] [1, 1, 0, 0, 0, 0, 0, -35, -35]
+[R Wed Jul 28 11:25:21 2021] [1, 1, 0, 0, 0, 0, 0, -25, -25]
+[R Wed Jul 28 11:25:21 2021] [1, 1, 0, 0, 0, 0, 0, -15, -15]
+[R Wed Jul 28 11:25:22 2021] [1, 1, 0, 0, 0, 0, 0, -5, -5]
+[R Wed Jul 28 11:25:22 2021] [1, 1, 0, 0, 0, 0, 0, 5, 5]
+[R Wed Jul 28 11:25:22 2021] [1, 1, 7, -7, 35, -7, 63, 51, 9]
+[R Wed Jul 28 11:25:22 2021] [1, 1, 0, 0, 0, 0, 0, 15, 15]
+[R Wed Jul 28 11:25:22 2021] [1, 1, 0, 0, 0, 0, 0, 25, 25]
+[R Wed Jul 28 11:25:22 2021] [1, 1, 0, 0, 0, 0, 0, 35, 35]
+[R Wed Jul 28 11:25:22 2021] [1, 1, 0, 0, 0, 0, 0, 40, 40]
+[R Wed Jul 28 11:25:22 2021] [1, 1, 0, 0, 0, 0, 0, 45, 45]
+Total elapsed time: 3979278us
+Server			Amount		Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Receive:        1146410         7766770         0                       320298                  6               
+Source:         31              86981362        2527809                 2919621                 2805850         
+Index:          0               0               N/A                     N/A                     N/A             
+Store:          0               0               N/A                     N/A                     N/A             
+Workers			Amount		Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Workers:        31              114568469       0                       16                      3695757         
+Receive:        1146410         7766770         0                       320298                  6               
+Send results:   24              97              3                       5                       4               
+Unit:           2850            18134385        78                      86978                   6362            
+Source:         31              86981362        2527809                 2919621                 2805850         
+Generate:       21531           18109169        0                       22157                   841             
+Filter:         25175           33833466        4                       47802                   1343            
+Retrieve:       24              0               0                       0                       0               
+Evaluation:     2770422         30101658        0                       3130                    10              
+Init:           382108          80186668        1                       58373                   209             
+Test			Amount Tested	Total Time (us)	Fastest Time (us)	SlowestTime (us)	Approx Avg Time (us)
+Disc:           21531           20852           0                       18                      0               
+Saved:          24              24              1                       1                       1               

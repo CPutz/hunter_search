@@ -1,0 +1,19 @@
+#!/bin/bash
+
+export LD_LIBRARY_PATH=./share/gnu/lib:$LD_LIBRARY_PATH
+
+APP=./bin/enum-debug
+COEFFS="-coeffs 1"
+DIVISORS="-divisors 1,1,1,1,1,1,1,1,1,1"
+LOCKED="-locked 5"
+DISC="-discriminant -2357947691"
+TREE="-tree data/3511/deg10/tree.txt"
+INPUT="-input data/3511/deg10/p11e9mod11.txt,data/3511/deg10/p3e0mod3.txt,data/3511/deg10/p5e0mod5.txt"
+OUTPUT="-output output009_deg10.txt"
+FILTER="-filter 7"
+PROGRESS="-progress prog009.txt"
+
+OMPI_OPTS="--mca btl ^usnic"
+NP="-np 5"
+
+mpirun $NP $OMPI_OPTS $APP $COEFFS $DIVISORS $DISC $INPUT $OUTPUT $TREE $LOCKED $PROGRESS

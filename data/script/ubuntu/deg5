@@ -1,0 +1,18 @@
+#!/bin/bash
+
+export LD_LIBRARY_PATH=./share/gnu/lib:$LD_LIBRARY_PATH
+
+APP=./bin/enum-debug
+COEFFS="-coeffs 1"
+DIVISORS="-divisors 1,1,1,1,1"
+LOCKED="-locked 2"
+INPUT="-input data/3511/p2emod2.txt"
+DISC="-discriminant 10673289"
+TREE="-tree data/3511/tree5.txt"
+OUTPUT="-output output_deg5.txt"
+PROGRESS="-progress prog5.txt"
+
+OMPI_OPTS="--mca btl ^usnic"
+NP="-np 5"
+
+mpirun $NP $OMPI_OPTS $APP $COEFFS $DIVISORS $DISC $OUTPUT $INPUT $TREE $LOCKED $PROGRESS

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Set max time a job may run in dd HH:mm:ss format, example given is 15 minutes
+#SBATCH --time=24:00:00
+
+# Set number of nodes (machines) required for the job to run, example given is 4
+#SBATCH -N 2
+
+# Set how many processes per node are created for the job, example given is 16
+#SBATCH --ntasks-per-node=32
+
+# Meaning the above will create a job running on 4 machines with a total of 4x16=64 processes for a maximum of 15 minutes
+
+# Standard environment variables
+. /etc/bashrc
+# Load profile modules
+. /etc/profile.d/modules.sh
+
+# For mpi, load its module, in this case the OpenMPI variant with gcc included
+module load openmpi/gcc/64
+
+# Add a custom library path to find the GMP and PARI libraries in the share folder
+LD_LIBRARY_PATH=./share/gnu/lib:$LD_LIBRARY_PATH
+
+# Variables to split out the long command otherwise
+APP=./bin/enum-stats
+COEFFS="-coeffs 1"
+DIVISORS="-divisors 2,14,14,7,14,14,2,1"
+LOCKED="-locked 4"
+DISC="-discriminant -2108270080000"
+TREE="-tree data/257/treea8.txt"
+INPUT="-input data/257/p2e12mod16.txt,data/257/p5e4mod5.txt,data/257/p7e7mod7.txt,data/257/p3e0mod3.txt"
+OUTPUT="-output data/output/257/output1247_11.txt"
+FILTER="-filter 11"
+
+# Something OpenMPI apparently needs, see example on das5 site
+OMPI_OPTS="--mca btl ^usnic"
+
+# Assemble the command to run the job, include or exclude variables where needed
+$MPI_RUN $OMPI_OPTS $APP $COEFFS $DIVISORS $DISC $INPUT $OUTPUT $TREE $LOCKED $FILTER

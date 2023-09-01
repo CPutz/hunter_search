@@ -1,0 +1,22 @@
+[I Wed Aug 23 14:09:17 2023] Program launch: 32 workers
+[A Wed Aug 23 14:09:17 2023] ./bin/enum-stats -coeffs 1 -divisors 1,1,1,1,1,1,1,1 -discriminant -10504375 -input data/257/p2e0mod8.txt,data/257/p5e4mod5.txt,data/257/p7e5mod7.txt,data/257/p3e0mod3.txt -output data/output/257/output045.txt -tree data/257/treea8.txt -locked 4 
+[R Wed Aug 23 14:09:20 2023] [1, 1, 0, 0, 0, 0, 0, -5, -5]
+[R Wed Aug 23 14:09:20 2023] [1, 1, 0, 0, 0, 0, 0, 5, 5]
+Total elapsed time: 847455us
+Server			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Idle:           45563           512906              0                   403426              11              
+Generate:       22734           3189                0                   100                 0               
+
+Workers			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Workers:        31              17492937            563917              565537              564288          
+Read input:     31              85412237            2530475             2807426             2755233         
+Idle:           22765           328072              1                   832                 14              
+Work units:     22734           3095127             1                   7941                136             
+Init:           22734           1793762             1                   7156                78              
+Generate:       24              20012               100                 1682                833             
+Last coeff.:    955             206                 0                   10                  0               
+Disc. eval.:    105410          2875100             0                   2301                27              
+Lagrange:       22834           48980               0                   126                 2               
+Send results:   2               21                  8                   13                  10              
+Disc. sq. test: 24              113                 0                   23                  4               
+Saved:          2               8                   3                   5                   4               

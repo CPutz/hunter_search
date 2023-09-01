@@ -1,0 +1,18 @@
+#!/bin/bash
+
+export LD_LIBRARY_PATH=./share/gnu/lib:$LD_LIBRARY_PATH
+
+APP=./bin/enum
+COEFFS="-coeffs 1"
+DIVISORS="-divisors 1,1,1,1,1,1,1,1"
+LOCKED="-locked 4"
+DISC="-discriminant -10504375"
+TREE="-tree data/257/treea8.txt"
+INPUT="-input data/257/p2e0mod4.txt,data/257/p5e4mod5.txt,data/257/p7e5mod7.txt"
+OUTPUT="-output output045.txt"
+
+OMPI_OPTS="--mca btl ^usnic"
+OMPI_OPTS_DEBUG="--mca btl ^usnic xterm -hold -e gdb -ex run --args"
+NP="-np 3"
+
+mpirun $NP $OMPI_OPTS $APP $COEFFS $DIVISORS $DISC $INPUT $OUTPUT $TREE $LOCKED

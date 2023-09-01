@@ -1,0 +1,11 @@
+*.o
+slurm-*
+
+bin/
+share/gnu/
+share/build/
+
+\.directory
+
+/*.txt
+/*.job

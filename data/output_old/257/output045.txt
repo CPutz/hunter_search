@@ -1,0 +1,26 @@
+[I Tue Jul 27 17:52:19 2021] Program launch: 32 workers
+[A Tue Jul 27 17:52:19 2021] ./bin/enum-debug -coeffs 1 -divisors 1,1,1,1,1,1,1,1 -discriminant -10504375 -input data/257/p2e0mod4.txt,data/257/p5e4mod5.txt,data/257/p7e5mod7.txt,data/257/pe30mod3.txt -bounds data/257/bounds045.txt -output data/output/257/output045.txt -tree data/257/treea8.txt -locked 4 
+[I Tue Jul 27 17:53:19 2021] Program launch: 32 workers
+[A Tue Jul 27 17:53:19 2021] ./bin/enum-debug -coeffs 1 -divisors 1,1,1,1,1,1,1,1 -discriminant -10504375 -input data/257/p2e0mod4.txt,data/257/p5e4mod5.txt,data/257/p7e5mod7.txt,data/257/p3e0mod3.txt -bounds data/257/bounds045.txt -output data/output/257/output045.txt -tree data/257/treea8.txt -locked 4 
+[R Tue Jul 27 17:53:19 2021] [1, 1, 0, 0, 0, 0, 0, -5, -5]
+[R Tue Jul 27 17:53:19 2021] [1, 1, 0, 0, 0, 0, 0, 5, 5]
+Total elapsed time: 141559us
+Server			Amount		Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Receive:        65644           830017          0                       3824                    12              
+Source:         31              1293566         23504                   55998                   41727           
+Index:          0               0               N/A                     N/A                     N/A             
+Store:          0               0               N/A                     N/A                     N/A             
+Workers			Amount		Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Workers:        31              4115874         0                       94                      132770          
+Receive:        65644           830017          0                       3824                    12              
+Send results:   2               8               4                       4                       4               
+Unit:           24              26640           123                     3478                    1110            
+Source:         31              1293566         23504                   55998                   41727           
+Generate:       25              26446           19                      3475                    1057            
+Filter:         679             988810          5                       6865                    1456            
+Retrieve:       2               0               0                       0                       0               
+Evaluation:     69043           2077452         0                       1132                    30              
+Init:           21860           2190707         1                       10494                   100             
+Test			Amount Tested	Total Time (us)	Fastest Time (us)	SlowestTime (us)	Approx Avg Time (us)
+Disc:           25              164             0                       30                      6               
+Saved:          2               5               2                       3                       2               
