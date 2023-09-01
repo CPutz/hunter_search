@@ -4,3 +4,5 @@ data/257/p7e7mod49_2d1.txt filter=lfs diff=lfs merge=lfs -text
 data/257/p7e7mod49_4d1.txt filter=lfs diff=lfs merge=lfs -text
 data/257/p3e0mod9.txt filter=lfs diff=lfs merge=lfs -text
 data/257/p5e6mod25.txt filter=lfs diff=lfs merge=lfs -text
+data/257/p7e7mod49_1eq2.txt filter=lfs diff=lfs merge=lfs -text
+data/257/p5e6mod25_2d1.txt filter=lfs diff=lfs merge=lfs -text
