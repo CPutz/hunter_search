@@ -24,14 +24,14 @@ LD_LIBRARY_PATH=./share/gnu/lib:$LD_LIBRARY_PATH
 
 # Variables to split out the long command otherwise
 APP=./bin/enum-stats
-COEFFS="-coeffs 1"
+COEFFS="-coeffs -2"
 DIVISORS="-divisors 2,14,14,140,14,14,2,1"
 LOCKED="-locked 4"
 DISC="-discriminant -210827008000000"
 TREE="-tree data/257/treea8.txt"
-INPUT="-input data/257/p2e14mod16_2d1_1d8.txt,data/257/p5e6mod5.txt,data/257/p7e7mod7.txt,data/257/p3e0mod3.txt"
-OUTPUT="-output data/output/257/1467/output1467_2d1_1d8.txt"
-FILTER="-filter 11,13"
+INPUT="-input data/257/p2e14mod4_s1eq2.txt,data/257/p5e6mod25_s1eq2.txt,data/257/p7e7mod49_s1eq2.txt,data/257/p3e0mod9_s1eq2.txt"
+OUTPUT="-output data/output/257/output1467_s1eq2.txt"
+FILTER="-filter 11"
 
 # Something OpenMPI apparently needs, see example on das5 site
 OMPI_OPTS="--mca btl ^usnic"
