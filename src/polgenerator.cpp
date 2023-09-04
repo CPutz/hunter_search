@@ -15,8 +15,7 @@ the discriminant is correct up to squares.
 #include "congruencegenerator.hpp"
 #include "order.hpp"
 
-PolGenerator::PolGenerator(std::vector<long> const &fixedcoefficients,
-        std::vector<long> const &divisors,
+PolGenerator::PolGenerator(std::vector<long> const &divisors,
         long const discriminant, std::fstream &treestream,
         std::vector<std::vector<std::vector<long>>> const &congruences,
         std::vector<std::vector<long>> const &moduli,
@@ -28,19 +27,12 @@ PolGenerator::PolGenerator(std::vector<long> const &fixedcoefficients,
     this->moduli = std::vector<std::vector<long>>(moduli);
     this->discriminant = discriminant;
     this->disctree = new HornerTree(treestream);
-    this->fixed = DEGREE - this->disctree->get_depth() + 1;
     this->bounds = new BoundGenerator(this->discriminant, this->divisors, stats);
     this->stats = stats;
+    mpz_init(this->tmp_z);
 
-    // Initialize the fixed coefficients
-    std::copy(fixedcoefficients.begin(), fixedcoefficients.end(), svalues.begin());
-    this->fixedsize = fixedcoefficients.size();
     svalues[0] = DEGREE;
     avalues[0] = 1;
-    for (int i = 1; i < this->fixedsize; i++) {
-        set_value(i, fixedcoefficients[i]);
-    }
-    mpz_init(this->tmp_z);
 
     // Create congruence lookup trees from congruence lists
     for (int i = 0; i < moduli.size(); i++) {
@@ -49,7 +41,7 @@ PolGenerator::PolGenerator(std::vector<long> const &fixedcoefficients,
 
     // Create congruence lookup trees for extra filtered primes
     for (int p : filter_primes) {
-        int num_coefficients = DEGREE - this->fixed + 1;
+        int num_coefficients = DEGREE;
         std::vector<long> moduli_p(num_coefficients);
         for (unsigned int i = 0; i < num_coefficients; i++) {
             moduli_p[i] = p;
@@ -67,8 +59,9 @@ PolGenerator::PolGenerator(std::vector<long> const &fixedcoefficients,
         }
 
         std::vector<long> gcds = std::vector<long>();
-        for (int i = 0; i < moduli_p.size(); i++) {
-            long div = divisors[i+this->fixed];
+        for (int i = 1; i <= moduli_p.size(); i++) {
+            long div = divisors[i];
+            
             long g = gcd(div / g, mod_lcm);
             long gd = 1;
             do {
@@ -128,16 +121,17 @@ void PolGenerator::eval_disc(unsigned int level) {
  */
 bool PolGenerator::init(std::vector<long> const &coefficients) {
     this->stats->start_timer_all_stats(ST_INIT);
-    this->locked = this->fixedsize + coefficients.size();
-    for (unsigned int i = this->fixed; i < this->locked; i++) {
-        if (!set_value(i, coefficients[i-this->fixed])) {
+    this->locked = coefficients.size();
+
+    for (unsigned int i = 1; i <= this->locked; i++) {
+        if (!set_value(i, coefficients[i-1])) {
             std::cout << "this should not happen: " << i << std::endl;
             this->stats->stop_timer_all_stats(ST_INIT);
             return false;
         }
     }
 
-    for (unsigned int i = locked; i < DEGREE; i++) {
+    for (unsigned int i = this->locked + 1; i < DEGREE; i++) {
         init_value(i);
     }
 
@@ -147,37 +141,37 @@ bool PolGenerator::init(std::vector<long> const &coefficients) {
     for (unsigned int i = 0; i < this->congruencelookup.size(); i++) {
         //first create the tree for extra filtered primes
         if (i >= index_shift) {
-            std::vector<long> locked_coeffs = std::vector<long>();
-            for (unsigned int i = this->fixed; i < this->locked; i++) {
-                locked_coeffs.push_back(avalues[i]);
+            std::vector<long> locked_acoeffs = std::vector<long>();
+            for (unsigned int i = 1; i <= this->locked; i++) {
+                locked_acoeffs.push_back(avalues[i]);
             }
             CongruenceGenerator *gen = this->congruencegenerators[i - index_shift];
             if (this->congruencelookup[i]) {
                 delete this->congruencelookup[i];
             }
-            std::vector<std::vector<long>> con = gen->generate_congruences(locked_coeffs);
+            std::vector<std::vector<long>> con = gen->generate_congruences(locked_acoeffs);
             this->congruencelookup[i] = new CongruenceLookup(con, moduli[i]);
         }
 
         this->congruencelookup[i]->reset();
         //walk to the position given by the locked coefficients
-        for (unsigned int j = this->fixed; j < this->locked; j++) {
+        for (unsigned int j = 1; j <= this->locked; j++) {
             if (!this->congruencelookup[i]->walk(
-                    avalues[j] / divisors_gcd[i][j-this->fixed])) {
+                    avalues[j] / divisors_gcd[i][j-1])) {
                 //cancel if no combination exists for the locked coefficients mod p
                 this->stats->stop_timer_all_stats(ST_INIT);
                 return false;
             }
         }
 
-        for (unsigned int j = this->locked; j < DEGREE; j++) {
+        for (unsigned int j = this->locked + 1; j < DEGREE; j++) {
             this->congruencelookup[i]->walk(
-                avalues[j] / divisors_gcd[i][j-this->fixed]);
+                avalues[j] / divisors_gcd[i][j-1]);
         }
     }
 
     //evalulate discriminant for the locked coefficients
-    for (unsigned int i = this->fixed; i <= DEGREE-2; i++) {
+    for (unsigned int i = 1; i <= DEGREE-2; i++) {
         eval_disc(i);
     }
 
@@ -299,7 +293,7 @@ bool PolGenerator::next(unsigned int level) {
 
         if (!increase_value(level)) {
             //if we reached the last non-locked level we are done
-            if (level <= locked) {
+            if (level - 1 <= this->locked) {
                 return false;
             }
 
@@ -323,7 +317,7 @@ bool PolGenerator::next(unsigned int level) {
                 this->congruencelookup[i]->walk_dummy();
             } else {
                 cancelled |= !this->congruencelookup[i]->walk(
-                    avalues[level] / divisors_gcd[i][level-this->fixed]);
+                    avalues[level] / divisors_gcd[i][level-1]);
             }
         }
     } while (cancelled);
@@ -371,7 +365,6 @@ bool PolGenerator::configure_next() {
 
         this->stats->stop_timer_all_stats(ST_CRT);
     }
-    
 
     if (last_values.size() > 0) {
         avalues[DEGREE] = last_values.front();

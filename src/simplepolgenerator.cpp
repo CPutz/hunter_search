@@ -31,8 +31,8 @@ SimplePolGenerator::SimplePolGenerator(std::vector<long> const &fixedcoefficient
     svalues[0] = DEGREE;
     avalues[0] = 1;
     this->fixed = fixedcoefficients.size();
-    for (int i = 1; i < this->fixed; i++) {
-        set_value(i, fixedcoefficients[i]);
+    for (int i = 1; i <= this->fixed; i++) {
+        set_value(i, fixedcoefficients[i-1]);
     }
 }
 
@@ -43,7 +43,7 @@ SimplePolGenerator::~SimplePolGenerator() { }
  */
 bool SimplePolGenerator::init() {
     bool res = true;
-    for (unsigned int i = this->fixed; i <= this->num_of_coefficients && res; i++) {
+    for (unsigned int i = this->fixed + 1; i <= this->num_of_coefficients && res; i++) {
         res = res && init_value(i);
     }
 
@@ -126,7 +126,7 @@ bool SimplePolGenerator::increase_value(unsigned int level) {
 bool SimplePolGenerator::next(unsigned int level) {
     if (!increase_value(level)) {
         //if we reached the last non-locked level we are done
-        if (level <= 0) {
+        if (level - 1 <= this->fixed) {
             return false;
         }
         if (!next(level - 1) || !init_value(level)) {
@@ -150,11 +150,11 @@ bool SimplePolGenerator::configure_next() {
  * They are stored using the internal ordering of coefficients (a_1, a_n, a_2, ...)
  */
 void SimplePolGenerator::get_coefficients(long container[]) {
-    for (int i = 0; i <= this->num_of_coefficients; i++) {
+    for (int i = 1; i <= this->num_of_coefficients; i++) {
         if (get_degree(i) == DEGREE) {
-            container[i] = avalues[i];
+            container[i-1] = avalues[i];
         } else {
-            container[i] = svalues[i];
+            container[i-1] = svalues[i];
         }
     }
 }

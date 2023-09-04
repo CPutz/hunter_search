@@ -105,7 +105,8 @@ void process_work_unit(PolGenerator &generator, std::vector<long> const &combina
  * Receive and process work units for worker nodes
  */
 void worker_thread_loop(std::vector<std::vector<long>> const &moduli) {
-    std::vector<long> combination(locked);
+    long fixed = fixedcoefficients.size();
+    std::vector<long> combination(fixed + locked);
     MPI_Status status;
 
     stats.start_timer(ST_WORKER);
@@ -119,8 +120,8 @@ void worker_thread_loop(std::vector<std::vector<long>> const &moduli) {
     }
 
     // Create polynomial generator
-    PolGenerator generator(fixedcoefficients, divisors,
-        discriminant, treestream, congruences, moduli, filter_primes, &stats);
+    PolGenerator generator(divisors, discriminant, treestream,
+        congruences, moduli, filter_primes, &stats);
     treestream.close();
 
     // Destroy the congruences data
@@ -138,8 +139,7 @@ void worker_thread_loop(std::vector<std::vector<long>> const &moduli) {
             break;
         } else {
             // Receive the work-units and process them
-            MPI_Recv(combination.data(), locked, MPI_LONG, status.MPI_SOURCE, WORK_UNIT_TAG, MPI_COMM_WORLD, &status);
-            
+            MPI_Recv(combination.data(), fixed + locked, MPI_LONG, status.MPI_SOURCE, WORK_UNIT_TAG, MPI_COMM_WORLD, &status);
             stats.start_timer_all_stats(ST_UNIT);
             process_work_unit(generator, combination);
             stats.stop_timer_all_stats(ST_UNIT);
@@ -162,14 +162,14 @@ void worker_thread_loop(std::vector<std::vector<long>> const &moduli) {
 void main_thread_loop() {
     long fixed = fixedcoefficients.size();
     long coefficients[fixed + locked];
-    std::vector<long> combination(locked);
+    std::vector<long> combination(fixed + locked);
     int terminated = 0;
     MPI_Status status;
     unsigned long count = 0;
 
     long result[DEGREE+1];
 
-    SimplePolGenerator generator(fixedcoefficients, fixed + locked - 1, divisors, discriminant, &stats);
+    SimplePolGenerator generator(fixedcoefficients, fixed + locked, divisors, discriminant, &stats);
 
     bool finished = !generator.init();
 
@@ -188,8 +188,8 @@ void main_thread_loop() {
                 MPI_Send(nullptr, 0, MPI_INT, status.MPI_SOURCE, TERMINATION_REQUEST_TAG, MPI_COMM_WORLD);
             } else {
                 generator.get_coefficients(coefficients);
-                std::copy(coefficients + fixed, coefficients + fixed + locked, combination.begin());
-                MPI_Send(combination.data(), locked, MPI_LONG, status.MPI_SOURCE, WORK_UNIT_TAG, MPI_COMM_WORLD);
+                std::copy(coefficients, coefficients + fixed + locked, combination.begin());
+                MPI_Send(combination.data(), fixed + locked, MPI_LONG, status.MPI_SOURCE, WORK_UNIT_TAG, MPI_COMM_WORLD);
                 count++;
                 stats.start_timer_all_stats(ST_GENERATE_SERVER);
                 finished = !generator.configure_next() || (hasworklimit && count >= worklimit);
@@ -249,7 +249,7 @@ void init_arg(int argc, char **argv) {
             i = ni;
         } else if (cmdarg == "-coeffs") {
             if (ni >= argc) {
-                std::cout << "-coeffs <c...> : set fixed coefficients, at least 1 is required" << std::endl;
+                std::cout << "-coeffs <c...> : set fixed coefficients" << std::endl;
                 std::exit(1);
             }
             std::stringstream ss(argv[ni]);
@@ -271,14 +271,14 @@ void init_arg(int argc, char **argv) {
                 tmp.push_back(d);
                 ss.ignore(1, ',');
             }
-            //add leading 1's
-            unsigned int s = tmp.size();
-            for (unsigned int j = 0; j <= DEGREE - s; j++) {
-                tmp.insert(tmp.begin(), 1);
+            if (tmp.size() != DEGREE) {
+                std::cout << "number of divisors (" << tmp.size() << ") must be equal to the DEGREE (" << DEGREE << ")" << std::endl;
+                std::exit(1);
             }
             //reorder the divisors
-            for (unsigned int j = 0; j <= DEGREE; j++) {
-                divisors.push_back(tmp[get_degree(j)]);
+            divisors.push_back(1); //the first (of the leading coefficient) divisor is always one
+            for (unsigned int j = 1; j <= DEGREE; j++) {
+                divisors.push_back(tmp[get_degree(j)-1]);
             }
             i = ni;
         } else if (cmdarg == "-discriminant") {

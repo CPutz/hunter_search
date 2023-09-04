@@ -19,10 +19,7 @@ class PolGenerator
     std::vector<long> avalues; // a_k values
     std::vector<long> svalues; //s_k for k = 0,1,..,DEGREE-3,-2,-1
     long discriminant; // the desired discriminant
-    unsigned int fixed; // number of fixed coefficients
-    unsigned int fixedsize;
     unsigned int locked; // number of locked coefficients
-        //(= fixed + additional locked ones on initialization)
     unsigned long prod;
     std::vector<long> crt_coeffs;
     HornerTree *disctree;
@@ -40,8 +37,7 @@ class PolGenerator
     bool increase_value(unsigned int level);
     
 public:
-    PolGenerator(std::vector<long> const &coefficients,
-        std::vector<long> const &divisors,
+    PolGenerator(std::vector<long> const &divisors,
         long const discriminant, std::fstream &treestream,
         std::vector<std::vector<std::vector<long>>> const &congruences,
         std::vector<std::vector<long>> const &moduli,
