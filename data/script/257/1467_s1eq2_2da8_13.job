@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Set max time a job may run in dd HH:mm:ss format, example given is 15 minutes
-#SBATCH --time=48:00:00
+#SBATCH --time=240:00:00
 
 # Set number of nodes (machines) required for the job to run, example given is 4
-#SBATCH -N 16
+#SBATCH -N 4
 
 # Set how many processes per node are created for the job, example given is 16
 #SBATCH --ntasks-per-node=32
@@ -25,13 +25,13 @@ LD_LIBRARY_PATH=./share/gnu/lib:$LD_LIBRARY_PATH
 # Variables to split out the long command otherwise
 APP=./bin/enum-stats
 COEFFS="-coeffs -2"
-DIVISORS="-divisors 2,14,14,140,14,14,2,1"
+DIVISORS="-divisors 2,28,28,140,28,28,4,2"
 LOCKED="-locked 3"
 DISC="-discriminant -210827008000000"
 TREE="-tree data/257/treea8.txt"
-INPUT="-input data/257/p2e14mod4_s1eq2.txt,data/257/p5e6mod25_s1eq2.txt,data/257/p7e7mod49_s1eq2.txt,data/257/p3e0mod9_s1eq2_a8eq5.txt"
-OUTPUT="-output data/output/257/output1467_s1eq2_a8eq5m9.txt"
-FILTER="-filter 11"
+INPUT="-input data/257/p2e14mod4_2ds1_2da8.txt,data/257/p5e6mod25_s1eq2.txt,data/257/p7e7mod49_s1eq2.txt,data/257/p3e0mod9_s1eq2.txt"
+OUTPUT="-output data/output/257/output1467_s1eq2_2da8_13.txt"
+FILTER="-filter 11,13"
 
 # Something OpenMPI apparently needs, see example on das5 site
 OMPI_OPTS="--mca btl ^usnic"

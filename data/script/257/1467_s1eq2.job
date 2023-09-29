@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Set max time a job may run in dd HH:mm:ss format, example given is 15 minutes
-#SBATCH --time=48:00:00
+#SBATCH --time=120:00:00
 
 # Set number of nodes (machines) required for the job to run, example given is 4
-#SBATCH -N 4
+#SBATCH -N 16
 
 # Set how many processes per node are created for the job, example given is 16
 #SBATCH --ntasks-per-node=32
@@ -26,10 +26,10 @@ LD_LIBRARY_PATH=./share/gnu/lib:$LD_LIBRARY_PATH
 APP=./bin/enum-stats
 COEFFS="-coeffs -2"
 DIVISORS="-divisors 2,14,14,140,14,14,2,1"
-LOCKED="-locked 4"
+LOCKED="-locked 3"
 DISC="-discriminant -210827008000000"
 TREE="-tree data/257/treea8.txt"
-INPUT="-input data/257/p2e14mod4_s1eq2.txt,data/257/p5e6mod25_s1eq2.txt,data/257/p7e7mod49_s1eq2.txt,data/257/p3e0mod9_s1eq2.txt"
+INPUT="-input data/257/p2e14mod4_2ds1.txt,data/257/p5e6mod25_s1eq2.txt,data/257/p7e7mod49_s1eq2.txt,data/257/p3e0mod9_s1eq2.txt"
 OUTPUT="-output data/output/257/output1467_s1eq2.txt"
 FILTER="-filter 11"
 
