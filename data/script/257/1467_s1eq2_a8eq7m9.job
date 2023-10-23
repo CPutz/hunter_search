@@ -29,7 +29,7 @@ DIVISORS="-divisors 2,14,14,140,14,14,2,1"
 LOCKED="-locked 3"
 DISC="-discriminant -210827008000000"
 TREE="-tree data/257/treea8.txt"
-INPUT="-input data/257/p2e14mod4_s1eq2.txt,data/257/p5e6mod25_s1eq2.txt,data/257/p7e7mod49_s1eq2.txt,data/257/p3e0mod9_s1eq2_a8eq7.txt"
+INPUT="-input data/257/p2e14mod4_2ds1.txt,data/257/p5e6mod25_s1eq2.txt,data/257/p7e7mod49_s1eq2.txt,data/257/p3e0mod9_s1eq2_a8eq7.txt"
 OUTPUT="-output data/output/257/output1467_s1eq2_a8eq7m9.txt"
 FILTER="-filter 11"
 
