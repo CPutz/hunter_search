@@ -4,7 +4,7 @@
 #SBATCH --time=120:00:00
 
 # Set number of nodes (machines) required for the job to run, example given is 4
-#SBATCH -N 8
+#SBATCH -N 16
 
 # Set how many processes per node are created for the job, example given is 16
 #SBATCH --ntasks-per-node=32
@@ -28,7 +28,7 @@ DIVISORS="-divisors 2,14,14,35,14,14,2,1"
 LOCKED="-locked 4"
 DISC="-discriminant -52706752000000"
 TREE="-tree data/257/treea8.txt"
-INPUT="-input data/257/p2e12mod16.txt,data/257/p5e6mod5.txt,data/257/p7e7mod7.txt,data/257/p3e0mod3.txt"
+INPUT="-input data/257/p2e12mod16.txt,data/257/p5e6mod25_2ds1.txt,data/257/p7e7mod49_2ds1.txt,data/257/p3e0mod3.txt"
 OUTPUT="-output data/output/257/output1267.txt"
 
 # Something OpenMPI apparently needs, see example on das5 site
