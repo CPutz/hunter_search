@@ -1,20 +1,20 @@
-[I Tue Oct 31 16:54:46 2023] Program launch: 32 workers
-[A Tue Oct 31 16:54:46 2023] ./bin/enum-stats -divisors 1,1,1,1,1,1,1 -discriminant -10504375 -input data/257_septic/p2e0mod8.txt,data/257_septic/p5e4mod5.txt,data/257_septic/p7e5mod7.txt,data/257_septic/p3e0mod3.txt -output data/output/257_septic/output045.txt -tree data/257_septic/tree.txt -locked 3 
-Total elapsed time: 62513us
+[I Tue Oct 31 17:13:31 2023] Program launch: 32 workers
+[A Tue Oct 31 17:13:31 2023] ./bin/enum-stats -divisors 1,1,1,1,1,1,1 -discriminant -10504375 -input data/257_septic/p2e0mod8.txt,data/257_septic/p5e4mod5.txt,data/257_septic/p7e5mod7.txt,data/257_septic/p3e0mod3.txt -output data/output/257_septic/output045.txt -tree data/257_septic/tree.txt -locked 3 
+Total elapsed time: 65241us
 Server			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
-Idle:           8649            36550               0                   20901               4               
-Generate:       4278            9072                0                   4266                2               
+Idle:           8649            43397               0                   28543               5               
+Generate:       4278            4928                0                   46                  1               
 
 Workers			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
-Workers:        31              1722215             55444               55749               55555           
-Read input:     31              6337156             164672              219206              204424          
-Idle:           4309            273966              1                   4439                63              
-Work units:     4278            492141              1                   2915                115             
-Init:           4278            217906              1                   2213                50              
-Generate:       23              4261                12                  796                 185             
-Last coeff.:    134             79                  0                   5                   0               
-Disc. eval.:    50842           337840              0                   316                 6               
-Lagrange:       4508            67830               0                   4265                15              
+Workers:        31              1815780             58434               58999               58573           
+Read input:     31              5742847             111867              223497              185253          
+Idle:           4309            90196               1                   159                 20              
+Work units:     4278            734801              1                   3041                171             
+Init:           4278            241252              1                   2407                56              
+Generate:       23              7279                13                  1342                316             
+Last coeff.:    134             83                  0                   5                   0               
+Disc. eval.:    50842           589403              0                   412                 11              
+Lagrange:       4508            46006               0                   85                  10              
 Send results:   0               0                   N/A                 N/A                 N/A             
-Disc. sq. test: 23              65                  0                   11                  2               
+Disc. sq. test: 23              73                  0                   15                  3               
 Saved:          0               0                   N/A                 N/A                 N/A             
