@@ -1,0 +1,20 @@
+[I Tue Oct 31 16:55:01 2023] Program launch: 32 workers
+[A Tue Oct 31 16:55:01 2023] ./bin/enum-stats -divisors 1,1,5,5,1,1,1 -discriminant -262609375 -input data/257_septic/p2e0mod8.txt,data/257_septic/p5e6mod5.txt,data/257_septic/p7e5mod7.txt,data/257_septic/p3e0mod3.txt -output data/output/257_septic/output065.txt -tree data/257_septic/tree.txt -locked 3 
+Total elapsed time: 190697us
+Server			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Idle:           90337           68903               0                   20140               0               
+Generate:       45122           28523               0                   68                  0               
+
+Workers			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Workers:        31              5706202             184014              184128              184071          
+Read input:     31              5768451             152127              225385              186079          
+Idle:           45153           2830042             1                   222                 62              
+Work units:     45122           1777385             1                   5058                39              
+Init:           45122           1071945             1                   5058                23              
+Generate:       7628            237808              0                   1010                31              
+Last coeff.:    9003            7025                0                   12                  0               
+Disc. eval.:    108603          630831              0                   229                 5               
+Lagrange:       46576           704852              0                   5052                15              
+Send results:   0               0                   N/A                 N/A                 N/A             
+Disc. sq. test: 7628            518                 0                   40                  0               
+Saved:          0               0                   N/A                 N/A                 N/A             
