@@ -25,7 +25,7 @@ function uptoiso(L);
 end function;
 
 load "1267.txt";
-time K1247 := filter(pols, -2^12*5^4*7^7);
+time K1267 := filter(pols, -2^12*5^6*7^7);
 
 
 
