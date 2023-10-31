@@ -57,8 +57,8 @@ K1247 := filter(pols, -2^12*5^4*7^7);
 load "1265.txt";
 K1265 := filter(pols, -2^12*5^6*7^5);
 
-//load "1267.txt";
-//K1267 := filter(pols, -2^12*5^6*7^7);
+load "1267.txt";
+K1267 := filter(pols, -2^12*5^6*7^7);
 
 load "1445.txt";
 K1445 := filter(pols, -2^14*5^4*7^5);
