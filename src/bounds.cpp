@@ -129,6 +129,8 @@ double BoundGenerator::bound_constant() {
 
 #if DEGREE == 5
     bc = pow(4 * std::abs((double)this->discriminant) / DEGREE, 1.0 / (DEGREE - 1));
+#elif DEGREE = 6
+    bc = pow(8 * std::abs((double)this->discriminant) / DEGREE, 1.0 / (DEGREE - 1));
 #elif DEGREE == 7
     bc = pow(64 / 3.0 * std::abs((double)this->discriminant) / DEGREE, 1.0 / (DEGREE - 1));
 #elif DEGREE == 8
