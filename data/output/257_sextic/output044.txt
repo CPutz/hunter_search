@@ -1,0 +1,20 @@
+[I Wed Nov  1 16:07:39 2023] Program launch: 32 workers
+[A Wed Nov  1 16:07:39 2023] ./bin/enum-stats -divisors 1,5,5,5,1,1 -discriminant 1500625 -input data/257_sextic/p5e4mod5_pos.txt,data/257_sextic/p7e4mod7.txt -output data/output/257_sextic/output044.txt -tree data/257_sextic/tree_pos1.txt -locked 3 
+Total elapsed time: 16844us
+Server			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Idle:           1809            10853               0                   8276                5               
+Generate:       858             3458                0                   28                  4               
+
+Workers			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Workers:        31              270835              8111                16638               8736            
+Read input:     31              159209              3373                19684               5135            
+Idle:           889             147264              2                   477                 165             
+Work units:     858             24957               1                   164                 29              
+Init:           858             21801               1                   141                 25              
+Generate:       132             961                 0                   29                  7               
+Last coeff.:    106             116                 0                   8                   1               
+Disc. eval.:    1264            7876                0                   43                  6               
+Lagrange:       1100            16167               0                   42                  14              
+Send results:   0               0                   N/A                 N/A                 N/A             
+Disc. sq. test: 132             95                  0                   11                  0               
+Saved:          0               0                   N/A                 N/A                 N/A             

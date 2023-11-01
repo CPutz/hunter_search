@@ -1,0 +1,22 @@
+[I Wed Nov  1 16:06:25 2023] Program launch: 32 workers
+[A Wed Nov  1 16:06:25 2023] ./bin/enum-stats -divisors 1,1,1,1,1,1 -discriminant 300125 -input data/257_sextic/p5e3mod5.txt,data/257_sextic/p7e4mod7.txt -output data/output/257_sextic/output034.txt -tree data/257_sextic/tree_pos5.txt -locked 3 
+[R Wed Nov  1 16:06:25 2023] [1, 1, 0, 0, 0, -7, -7]
+[R Wed Nov  1 16:06:25 2023] [1, 1, 0, 0, 0, 7, 7]
+Total elapsed time: 15745us
+Server			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Idle:           2743            11044               0                   5983                4               
+Generate:       1324            1467                0                   25                  1               
+
+Workers			Amount			Total Time (us)		Fastest Time (us)	Slowest Time (us)	Approx Avg Time (us)
+Workers:        31              251282              6783                15541               8105            
+Read input:     31              239066              4708                13040               7711            
+Idle:           1355            78795               2                   145                 58              
+Work units:     1324            29986               0                   276                 22              
+Init:           1324            25064               0                   172                 18              
+Generate:       14              379                 6                   73                  27              
+Last coeff.:    28              25                  0                   3                   0               
+Disc. eval.:    1523            7180                0                   54                  4               
+Lagrange:       1418            19560               0                   40                  13              
+Send results:   2               0                   0                   0                   0               
+Disc. sq. test: 14              30                  0                   10                  2               
+Saved:          2               2                   1                   1                   1               
