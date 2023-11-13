@@ -24,7 +24,7 @@ LD_LIBRARY_PATH=./share/gnu/lib:$LD_LIBRARY_PATH
 
 # Variables to split out the long command otherwise
 APP=./bin/enum-stats
-DIVISORS="-divisors 4,28,28,140,28,28,4,1"
+DIVISORS="-divisors 4,28,28,70,28,28,4,1"
 LOCKED="-locked 4"
 DISC="-discriminant -210827008000000"
 TREE="-tree data/257/treea8.txt"
