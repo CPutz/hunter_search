@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set max time a job may run in dd HH:mm:ss format, example given is 15 minutes
-#SBATCH --time=2:00:00
+#SBATCH --time=48:00:00
 
 # Set number of nodes (machines) required for the job to run, example given is 4
 #SBATCH -N 1
@@ -29,7 +29,7 @@ LOCKED="-locked 4"
 DISC="-discriminant -9380669484375"
 TREE="-tree data/357/tree.txt"
 INPUT="-input data/357/p2e0mod8.txt,data/357/667/p3e6mod9.txt,data/357/667/p5e6mod5.txt,data/357/p7e7mod7.txt"
-OUTPUT="-output data/output/357/output667.txt"
+OUTPUT="-output data/output/357/output667div.txt"
 
 # Something OpenMPI apparently needs, see example on das5 site
 OMPI_OPTS="--mca btl ^usnic"
