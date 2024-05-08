@@ -25,10 +25,9 @@ To run (and in the first case compile) the program, the following libraries need
 
 * [`gmp`](https://gmplib.org/) version `>= 6.1.1`. In [share](share), a version of `gmp` is included. It can be installed in this folder by running the following commands.  
 
-        ```cd share  
+        cd share  
         tar -xf gmp-6.1.1.tar.xz  
         make install-all
-        ```
 
 * [`mpi`](https://www.open-mpi.org/). The program has been tested and should work using `Open MPI` versions `>= 1.10.3`.
 
