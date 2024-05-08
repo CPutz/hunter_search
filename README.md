@@ -23,9 +23,7 @@ make all-stats DEG=<degree>
 
 To run (and in the first case compile) the program, the following libraries need to be installed.
 
-* [`gmp`](https://gmplib.org/) version `>= 6.1.1`. In [share](share), a version of `gmp` is included. It can be installed in this folder by running the following commands.
-
-```
+* [`gmp`](https://gmplib.org/) version `>= 6.1.1`. In [share](share), a version of `gmp` is included. It can be installed in this folder by running the following commands. ```
 cd share
 tar -xf gmp-6.1.1.tar.xz
 make install-all
