@@ -63,8 +63,7 @@ We will give a description of the contents of this repository.
 * [include](include): All include files for the program.
 * [misc](misc): Contains a Mathematica script [disc_tree.nb](misc/disc_tree.nb) for computing discriminant trees, which are used as necessary input for the Hunter search program.
 * [share](share): Contains a copy of `gmp` and a `MakeFile` to locally build `gmp`.
-* [src](src): The C++ source files. We will give a brief description of the contents of each file.
-    + **Description**
+* [src](src): The C++ source files.
 
 
 ## References
