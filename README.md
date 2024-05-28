@@ -39,7 +39,7 @@ Several options (some of which are mandatory for the progarm to run) can be pass
 
 + -disc (mandatory): The discriminant bound for the Hunter search.
 + -divisors (mandatory): A comma-separated list of positive integers which the coefficients of the defining polynomials should be divisible by. This list should be exactly as long as the degree of the Hunter search.
-+ -tree (mandatory): A file containing the discriminant tree in a specific text format (as produced by the Mathematica script [misc/disc_tree.nb](blob/main/misc/disc_tree.nb)).
++ -tree (mandatory): A file containing the discriminant tree in a specific text format (as produced by the Mathematica script [misc/disc_tree.nb](main/misc/disc_tree.nb)).
 + -locked (mandatory): A positive integer $1 \le k \le \text{degree}-1$, which represents the number of coefficients which are fixed by the root node and are then distributed to different worker nodes.
 + -input (optional): A comma-separated list of text files containing congruences for the resulting defining polynomials.
 + -output (optional): The path of the output file (default: `output.txt`).
