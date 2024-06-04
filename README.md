@@ -68,4 +68,4 @@ We will give a description of the contents of this repository.
 
 ## References
 
-\[1\] Casper Putz. \`Enumeration of local and global étale algebras applied to generalized Fermat equations\`. PhD thesis. Vrije universiteit Amsterdam, 2024 - to be submitted
+\[1\] Casper Putz. \`Enumeration of local and global étale algebras applied to generalized Fermat equations\`. PhD thesis. Vrije universiteit Amsterdam, 2024
